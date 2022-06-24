@@ -10,17 +10,19 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late WebSocketChannel channel;
+  int a = 0;
 
   @override
   void initState() {
     super.initState();
     channel = WebSocketChannel.connect(
-      Uri.parse('ws://localhost:8080'),
+      Uri.parse('ws://localhost:8000/ws'),
     );
+    channel.stream.listen(print);
   }
 
   void _sendIncrementCommand() {
-    channel.sink.add('increment');
+    channel.sink.add('increment ${a++}');
   }
 
   @override

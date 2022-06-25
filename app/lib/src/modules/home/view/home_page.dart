@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
     channel = WebSocketChannel.connect(
       Uri.parse('ws://localhost:8000/ws'),
     );
+    // ignore: avoid_print
     channel.stream.listen(print);
   }
 
